@@ -23,10 +23,13 @@ namespace Application
 
         public double AverageAge { get => averageAge; set => averageAge = value; }
 
+     
+
 
         public override string ToString()
         {
-            return "Minimal age:" + minAge + "\n" + "Maximal age:" + maxAge + "\n" + "Average age:" + averageAge;
+            return "Minimal age:" + minAge + "\n" + "Maximal age:" + maxAge + "\n" + "Average age:"
+                + AverageAge ;
         }
 
 
@@ -96,7 +99,6 @@ namespace Application
 
             double average = 0;
             int sum = 0;
-
             foreach(var i in ageArray)
             {
                 sum += i;
