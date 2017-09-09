@@ -7,14 +7,18 @@ using static System.Console;
 
 namespace Application
 {
+
+    public delegate string MyHandler();
+
     class Program
     {
         private static string Print() => "Hello World!";
 
         static void Main(string[] args)
         {
+            MyHandler d = Print;
 
-            Write(Print());
+            Write(d());
             ReadKey();
         }
     }
