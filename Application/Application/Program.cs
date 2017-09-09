@@ -17,7 +17,7 @@ namespace Application
         static void Main(string[] args)
         {
             MyHandler d = Print;
-
+            WriteLine("Create new line");
             Write(d());
             ReadKey();
         }
