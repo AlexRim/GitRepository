@@ -13,6 +13,8 @@ namespace PmaProject
     {
         private IWebDriver browser;
         private WebDriverWait wait;
+
+        By userNameField_locator = By.Id("input_username");
         
         public PmaLoginPageObject(IWebDriver browser)
         {
@@ -20,10 +22,13 @@ namespace PmaProject
             this.browser = browser;
         }
 
-        public IWebElement UserField => this.browser.FindElement(By.Id("input_username"));
+        public IWebElement UserField => this.browser.FindElement(userNameField_locator);
+
+        public string GetTitle => this.browser.Title;
 
         public PmaLoginPageObject InputUserName(string username)
         {
+            wait.Until(ExpectedConditions.ElementExists(userNameField_locator));
             this.UserField.Clear();
             this.UserField.SendKeys(username);
             return this;

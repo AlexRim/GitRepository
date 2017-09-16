@@ -19,7 +19,6 @@ namespace PmaProject
         [SetUp]
         public void SetUp()
         {
-
             driver = new FirefoxDriver();
             loginPage = new PmaLoginPageObject(driver);
         }
@@ -27,8 +26,10 @@ namespace PmaProject
         [Test]
         public void Navigate()
         {
-            driver.Url= "http://localhost/pma";
-            Assert.AreEqual("PhpMyAdmin", driver.Title);
+            driver.Url= "http://localhost/pma";         
+            Assert.AreEqual("phpMyAdmin", loginPage.GetTitle);
+            loginPage.InputUserName("root");
+         
 
             //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             //loginPage.InputUserName("root");
@@ -39,7 +40,7 @@ namespace PmaProject
         [TearDown]
         public void CleanUp()
         {
-            driver.Close();
+            driver.Quit();
         }
 
 
