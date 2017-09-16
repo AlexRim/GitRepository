@@ -14,22 +14,25 @@ namespace PmaProject
     public class Class1
     {
         private IWebDriver driver;
+        private PmaLoginPageObject loginPage;
+        
         [SetUp]
         public void SetUp()
         {
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"e:\GeckoDriver");
-            service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
-           driver = new FirefoxDriver(service);
+
+            driver = new FirefoxDriver();
+            loginPage = new PmaLoginPageObject(driver);
         }
 
         [Test]
         public void Navigate()
         {
-            driver.Navigate().GoToUrl("http://www.google.com");
-            var wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
-            var clickableElement = wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.Id("hplogo")));
-            string title= driver.FindElement(By.Id("hplogo")).GetAttribute("title");
-            Assert.AreEqual("Google", title);
+            driver.Url= "http://localhost/pma";
+            Assert.AreEqual("PhpMyAdmin", driver.Title);
+
+            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //loginPage.InputUserName("root");
+
 
         }
 
