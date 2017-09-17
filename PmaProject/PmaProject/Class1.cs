@@ -16,31 +16,34 @@ namespace PmaProject
         private IWebDriver driver;
         private PmaLoginPageObject loginPage;
         
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             driver = new FirefoxDriver();
             loginPage = new PmaLoginPageObject(driver);
         }
 
-        [Test]
+      
+     [Test, Order(1)]
         public void Navigate()
         {
-            driver.Url= "http://localhost/pma";         
+            driver.Url= "http://localhost/pma";
             Assert.AreEqual("phpMyAdmin", loginPage.GetTitle);
-            loginPage.InputUserName("root");
-         
-
-            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            //loginPage.InputUserName("root");
-
-
         }
 
-        [TearDown]
-        public void CleanUp()
+        [Test, Order(1)]
+        public void InputLoginPassword()
         {
-            driver.Quit();
+            loginPage.InputUserNameAndPassword("root", "123456");
+        }
+
+
+
+        [OneTimeTearDown]
+       public void CleanUp()
+        {
+          // driver.Close();
+           driver.Quit();
         }
 
 

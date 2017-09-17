@@ -21,12 +21,12 @@ namespace MyRunClass
             IWebDriver driver = new FirefoxDriver();
 
             driver.Navigate().GoToUrl("http://localhost/pma");
- 
-         
 
-          
 
-            driver.Close();
+
+          //  driver.Close();
+
+            driver.Quit();
         }
     }
 }
