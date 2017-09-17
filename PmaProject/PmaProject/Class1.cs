@@ -15,6 +15,7 @@ namespace PmaProject
     {
         private IWebDriver driver;
         private PmaLoginPageObject loginPage;
+        private PmaMainPage mainPage;
         
         [OneTimeSetUp]
         public void SetUp()
@@ -31,11 +32,16 @@ namespace PmaProject
             Assert.AreEqual("phpMyAdmin", loginPage.GetTitle);
         }
 
-        [Test, Order(1)]
+        [Test, Order(2)]
         public void InputLoginPassword()
         {
             loginPage.InputUserNameAndPassword("root", "123456");
+             mainPage=loginPage.GoButtonClick();
+            Assert.True(mainPage.IsRefCreateDataBasePresent());
+            mainPage.ButtonCreateDataBaseClick();
         }
+
+        
 
 
 

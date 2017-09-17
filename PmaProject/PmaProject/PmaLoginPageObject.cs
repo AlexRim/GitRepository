@@ -17,7 +17,21 @@ namespace PmaProject
       //  By userNameField_locator = By.Id("input_username");
         By userNameField_locator = By.XPath("//*[@name='login_form']/fieldset/div/input");
        // By passwordInputField_locator = By.Id("input_password");
-       By passwordInputField_locator = By.XPath("//*[@name='login_form']/fieldset/div[2]/input");
+        By passwordInputField_locator = By.XPath("//*[@name='login_form']/fieldset/div[2]/input");
+
+        By goButton_locator = By.XPath("//*[@name='login_form']/fieldset[2]/input");
+
+        public IWebElement GoButton => this.browser.FindElement(goButton_locator);
+
+        public PmaMainPage GoButtonClick()
+        {
+            GoButton.Click();
+            var mainPage = new PmaMainPage(this.browser);
+
+            return mainPage;
+        }
+
+
 
     
 

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="PmaLoginPageObject.cs" />
+    <Compile Include="PmaMainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
