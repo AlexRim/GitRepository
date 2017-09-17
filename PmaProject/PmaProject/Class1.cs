@@ -38,10 +38,18 @@ namespace PmaProject
             loginPage.InputUserNameAndPassword("root", "123456");
              mainPage=loginPage.GoButtonClick();
             Assert.True(mainPage.IsRefCreateDataBasePresent());
-            mainPage.ButtonCreateDataBaseClick();
         }
 
-        
+        [Test, Order(3)]
+        public void CreateDatabase()
+        {
+            mainPage.ButtonDataBaseClick();
+            mainPage.SelectDataBaseMainLanguage();
+
+
+        }
+
+
 
 
 

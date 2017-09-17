@@ -18,14 +18,30 @@ namespace PmaProject
         By linkCreateDataBase_locator = By.XPath("//*[@id='topmenucontainer']/ul/li[1]/a");
         public IWebElement ButtonCreateDataBase => this.browser.FindElement(linkCreateDataBase_locator);
 
+        By chooseMainLanguage_locator = By.XPath("//*[@id='create_database_form']/select");
+
+        public IWebElement ChooseMainLanguageDropBox => this.browser.FindElement(chooseMainLanguage_locator);
+
+        public PmaMainPage SelectDataBaseMainLanguage()
+        {
+            WaitForByLocator(chooseMainLanguage_locator);
+
+
+            SelectElement select = new SelectElement(ChooseMainLanguageDropBox);
+            select.SelectByValue("utf8_general_ci");
+
+           
+            return this;
+        }
+
 
         public bool IsRefCreateDataBasePresent()
         {
-            waitForByLcoator(linkCreateDataBase_locator);
+            WaitForByLocator(linkCreateDataBase_locator);
             return this.browser.FindElement(linkCreateDataBase_locator) != null;
         }
 
-        public PmaMainPage ButtonCreateDataBaseClick()
+        public PmaMainPage ButtonDataBaseClick()
         {
             ButtonCreateDataBase.Click();
             return this;
@@ -46,7 +62,7 @@ namespace PmaProject
 
         public string GetTitle => this.browser.Title;
 
-        private void waitForByLcoator(By locator)
+        private void WaitForByLocator(By locator)
         {
             if (wait == null)
                 wait = new WebDriverWait(browser, new TimeSpan(0, 0, 5));

@@ -45,7 +45,7 @@ namespace PmaProject
         public IWebElement SelectLanguage => this.browser.FindElement(selectLanguage_locator);
         public void SetEnglishLanguage()
         {
-            waitForByLcoator(selectLanguage_locator);
+            WaitForByLocator(selectLanguage_locator);
             SelectElement el = new SelectElement(this.SelectLanguage);
             el.SelectByText("English");
         }
@@ -71,7 +71,7 @@ namespace PmaProject
 
 
 
-        private void waitForByLcoator(By locator)
+        private void WaitForByLocator(By locator)
         {
             if (wait == null)
             wait = new WebDriverWait(browser, new TimeSpan(0, 0, 5));
